@@ -20,8 +20,13 @@ class GameLedger {
 
     }
 
-    fun playerPaysBankForBuilding(playerName: String, fee: Int) {
-        transactions.add(Triple(playerName, -fee, TransactionType.PlayerPaysBankForBuilding))
+    fun playerPaysBankForBuilding(playerName: String, fee: Int, buildingType: BuildingType) {
+        val transactionType = when (buildingType) {
+            BuildingType.Ministore -> TransactionType.PlayerPaysBankForMinistore
+            BuildingType.Supermarket -> TransactionType.PlayerPaysBankForSupermarket
+            else -> TransactionType.PlayerPaysBankForMegastore
+        }
+        transactions.add(Triple(playerName, -fee, transactionType))
 
     }
 }
@@ -32,5 +37,14 @@ enum class TransactionType {
     PlayerPaysRent,
     PlayerReceivesRent,
     PlayerPaysBankForLocation,
-    PlayerPaysBankForBuilding
+    PlayerPaysBankForMinistore,
+    PlayerPaysBankForSupermarket,
+    PlayerPaysBankForMegastore
+}
+
+enum class BuildingType {
+    Ministore,
+    Supermarket,
+    Megastore
+
 }
