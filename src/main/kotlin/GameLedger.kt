@@ -9,9 +9,15 @@ class GameLedger {
     fun bankPaysFeeToPlayer(playerName: String, fee: Int) {
         transactions.add(Triple(playerName, fee, TransactionType.BankFeeToPlayer))
     }
-    fun playerPaysRentToPlayer(payingPlayer:String, receivingPlayer:String, rent: Int) {
-        transactions.add(Triple(payingPlayer,-rent,TransactionType.PlayerPaysRent))
-        transactions.add(Triple(receivingPlayer,rent,TransactionType.PlayerReceivesRent))
+
+    fun playerPaysRentToPlayer(payingPlayer: String, receivingPlayer: String, rent: Int) {
+        transactions.add(Triple(payingPlayer, -rent, TransactionType.PlayerPaysRent))
+        transactions.add(Triple(receivingPlayer, rent, TransactionType.PlayerReceivesRent))
+    }
+
+    fun playerPaysBankForLocation(playerName: String, fee: Int) {
+        transactions.add(Triple(playerName, -fee, TransactionType.PlayerPaysBankForLocation))
+
     }
 }
 
@@ -19,5 +25,6 @@ enum class TransactionType {
     StartingBalance,
     BankFeeToPlayer,
     PlayerPaysRent,
-    PlayerReceivesRent
+    PlayerReceivesRent,
+    PlayerPaysBankForLocation
 }

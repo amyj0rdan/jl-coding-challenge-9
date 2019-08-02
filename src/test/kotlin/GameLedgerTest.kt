@@ -27,4 +27,13 @@ class GameLedgerTest {
 
         assertThat(gameLedger.transactions).isEqualTo(listOf(Triple("Susan", -100, TransactionType.PlayerPaysRent), Triple("Bill", 100, TransactionType.PlayerReceivesRent)))
     }
+
+    @Test
+    fun `player pays bank for location`() {
+        val gameLedger = GameLedger()
+        gameLedger.playerPaysBankForLocation("Gary",500)
+        assertThat(gameLedger.transactions).isEqualTo(listOf(Triple("Gary", -500, TransactionType.PlayerPaysBankForLocation)))
+
+    }
+
 }
