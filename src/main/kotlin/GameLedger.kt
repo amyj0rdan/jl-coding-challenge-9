@@ -19,6 +19,11 @@ class GameLedger {
         transactions.add(Triple(playerName, -fee, TransactionType.PlayerPaysBankForLocation))
 
     }
+
+    fun playerPaysBankForBuilding(playerName: String, fee: Int) {
+        transactions.add(Triple(playerName, -fee, TransactionType.PlayerPaysBankForBuilding))
+
+    }
 }
 
 enum class TransactionType {
@@ -26,5 +31,6 @@ enum class TransactionType {
     BankFeeToPlayer,
     PlayerPaysRent,
     PlayerReceivesRent,
-    PlayerPaysBankForLocation
+    PlayerPaysBankForLocation,
+    PlayerPaysBankForBuilding
 }
